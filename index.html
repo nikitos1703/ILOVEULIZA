@@ -3,22 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Лиза, я тебя люблю</title>
+    <title>Любовь Никиты к Лизе</title>
     <style>
         body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background: url('https://source.unsplash.com/1600x900/?sea,ocean') no-repeat center center/cover;
-            flex-direction: column;
+            background: url('https://source.unsplash.com/1600x900/?love,romantic') no-repeat center center/cover;
             font-family: Arial, sans-serif;
             text-align: center;
+            color: white;
+            overflow: hidden;
         }
         h1 {
             font-size: 3em;
-            color: #d40000;
-            text-shadow: 2px 2px 5px #ff4d4d;
+            margin-top: 50px;
+            text-shadow: 2px 2px 10px rgba(255, 0, 0, 0.8);
         }
         .heart {
             width: 100px;
@@ -27,6 +24,7 @@
             position: relative;
             transform: rotate(-45deg);
             margin: 20px auto;
+            animation: pulse 1.5s infinite;
         }
         .heart::before, .heart::after {
             content: "";
@@ -44,48 +42,54 @@
             left: 50px;
             top: 0;
         }
-        .cherry-button {
-            width: 80px;
-            height: 80px;
-            font-size: 1.2em;
-            background-color: #d40000;
-            color: white;
+        @keyframes pulse {
+            0% { transform: scale(1) rotate(-45deg); }
+            50% { transform: scale(1.2) rotate(-45deg); }
+            100% { transform: scale(1) rotate(-45deg); }
+        }
+        .button {
+            font-size: 1.5em;
+            background-color: pink;
             border: none;
-            border-radius: 50%;
+            padding: 15px 30px;
+            border-radius: 20px;
             cursor: pointer;
-            transition: 0.3s;
-            position: relative;
+            margin-top: 20px;
+        }
+        .gallery {
             display: flex;
-            justify-content: center;
-            align-items: center;
+            overflow: hidden;
+            width: 100%;
+            white-space: nowrap;
+            margin-top: 50px;
         }
-        .cherry-button:hover {
-            background-color: #ff4d4d;
-        }
-        .cherry-button::before {
-            content: "🍒";
-            position: absolute;
-            font-size: 2em;
+        .gallery img {
+            width: 300px;
+            height: 200px;
+            margin: 10px;
+            border-radius: 15px;
         }
         .fireworks {
             position: absolute;
             width: 100%;
             height: 100%;
-            pointer-events: none;
             top: 0;
             left: 0;
+            pointer-events: none;
             display: none;
         }
     </style>
 </head>
 <body>
-    <h1>Лиза, я тебя люблю ❤️</h1>
+    <h1>Лиза, я тебя люблю! ❤️</h1>
     <div class="heart"></div>
-    <button class="cherry-button" onclick="showFireworks()"></button>
+    <button class="button" onclick="startSurprise()">Нажми сюда</button>
+    
+    <div class="gallery" id="gallery"></div>
     <div class="fireworks" id="fireworks"></div>
-
+    
     <script>
-        function showFireworks() {
+        function startSurprise() {
             let fireworks = document.getElementById('fireworks');
             fireworks.style.display = 'block';
             for (let i = 0; i < 50; i++) {
@@ -107,6 +111,23 @@
                 }, 1500);
             }
         }
+
+        function loadGallery() {
+            let gallery = document.getElementById('gallery');
+            let images = [
+                'https://source.unsplash.com/300x200/?love',
+                'https://source.unsplash.com/300x200/?romantic',
+                'https://source.unsplash.com/300x200/?couple',
+                'https://source.unsplash.com/300x200/?heart',
+                'https://source.unsplash.com/300x200/?flowers'
+            ];
+            images.forEach(src => {
+                let img = document.createElement('img');
+                img.src = src;
+                gallery.appendChild(img);
+            });
+        }
+        window.onload = loadGallery;
     </script>
 </body>
-</html> 
+</html>
