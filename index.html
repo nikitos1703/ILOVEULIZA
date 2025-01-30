@@ -6,7 +6,7 @@
     <title>Любовь Никиты к Лизе</title>
     <style>
         body {
-            background: url('https://source.unsplash.com/1600x900/?love,romantic') no-repeat center center/cover;
+            background: url('https://source.unsplash.com/1600x900/?romantic,sea') no-repeat center center/cover;
             font-family: Arial, sans-serif;
             text-align: center;
             color: white;
@@ -18,8 +18,8 @@
             text-shadow: 2px 2px 10px rgba(255, 0, 0, 0.8);
         }
         .heart {
-            width: 100px;
-            height: 100px;
+            width: 120px;
+            height: 120px;
             background-color: red;
             position: relative;
             transform: rotate(-45deg);
@@ -28,18 +28,18 @@
         }
         .heart::before, .heart::after {
             content: "";
-            width: 100px;
-            height: 100px;
+            width: 120px;
+            height: 120px;
             background-color: red;
             border-radius: 50%;
             position: absolute;
         }
         .heart::before {
-            top: -50px;
+            top: -60px;
             left: 0;
         }
         .heart::after {
-            left: 50px;
+            left: 60px;
             top: 0;
         }
         @keyframes pulse {
@@ -49,7 +49,8 @@
         }
         .button {
             font-size: 1.5em;
-            background-color: pink;
+            background-color: #ff4d4d;
+            color: white;
             border: none;
             padding: 15px 30px;
             border-radius: 20px;
@@ -58,16 +59,15 @@
         }
         .gallery {
             display: flex;
-            overflow: hidden;
-            width: 100%;
-            white-space: nowrap;
+            justify-content: center;
+            gap: 15px;
             margin-top: 50px;
         }
         .gallery img {
-            width: 300px;
-            height: 200px;
-            margin: 10px;
+            width: 250px;
+            height: 170px;
             border-radius: 15px;
+            object-fit: cover;
         }
         .fireworks {
             position: absolute;
@@ -85,7 +85,12 @@
     <div class="heart"></div>
     <button class="button" onclick="startSurprise()">Нажми сюда</button>
     
-    <div class="gallery" id="gallery"></div>
+    <div class="gallery" id="gallery">
+        <img src="https://cdn.pixabay.com/photo/2016/11/29/05/15/adult-1867098_1280.jpg" alt="Love">
+        <img src="https://cdn.pixabay.com/photo/2017/08/06/00/09/couple-2590655_1280.jpg" alt="Couple">
+        <img src="https://cdn.pixabay.com/photo/2016/06/06/22/39/sunset-1431189_1280.jpg" alt="Sunset">
+        <img src="https://cdn.pixabay.com/photo/2015/07/17/22/43/student-849825_1280.jpg" alt="Together">
+    </div>
     <div class="fireworks" id="fireworks"></div>
     
     <script>
@@ -111,23 +116,6 @@
                 }, 1500);
             }
         }
-
-        function loadGallery() {
-            let gallery = document.getElementById('gallery');
-            let images = [
-                'https://source.unsplash.com/300x200/?love',
-                'https://source.unsplash.com/300x200/?romantic',
-                'https://source.unsplash.com/300x200/?couple',
-                'https://source.unsplash.com/300x200/?heart',
-                'https://source.unsplash.com/300x200/?flowers'
-            ];
-            images.forEach(src => {
-                let img = document.createElement('img');
-                img.src = src;
-                gallery.appendChild(img);
-            });
-        }
-        window.onload = loadGallery;
     </script>
 </body>
 </html>
