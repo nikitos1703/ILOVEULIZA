@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лиза, я тебя люблю</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: url('https://source.unsplash.com/1600x900/?sea,ocean') no-repeat center center/cover;
+            flex-direction: column;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        h1 {
+            font-size: 3em;
+            color: #d40000;
+            text-shadow: 2px 2px 5px #ff4d4d;
+        }
+        .heart {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: relative;
+            transform: rotate(-45deg);
+            margin: 20px auto;
+        }
+        .heart::before, .heart::after {
+            content: "";
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            border-radius: 50%;
+            position: absolute;
+        }
+        .heart::before {
+            top: -50px;
+            left: 0;
+        }
+        .heart::after {
+            left: 50px;
+            top: 0;
+        }
+        .cherry-button {
+            width: 80px;
+            height: 80px;
+            font-size: 1.2em;
+            background-color: #d40000;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: 0.3s;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .cherry-button:hover {
+            background-color: #ff4d4d;
+        }
+        .cherry-button::before {
+            content: "🍒";
+            position: absolute;
+            font-size: 2em;
+        }
+        .fireworks {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            top: 0;
+            left: 0;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Лиза, я тебя люблю ❤️</h1>
+    <div class="heart"></div>
+    <button class="cherry-button" onclick="showFireworks()"></button>
+    <div class="fireworks" id="fireworks"></div>
+
+    <script>
+        function showFireworks() {
+            let fireworks = document.getElementById('fireworks');
+            fireworks.style.display = 'block';
+            for (let i = 0; i < 50; i++) {
+                let cat = document.createElement('div');
+                cat.innerHTML = '🐱';
+                cat.style.position = 'absolute';
+                cat.style.fontSize = Math.random() * 30 + 20 + 'px';
+                cat.style.left = Math.random() * 100 + 'vw';
+                cat.style.top = Math.random() * 100 + 'vh';
+                cat.style.opacity = '0';
+                cat.style.transition = 'opacity 0.5s ease, transform 1s ease';
+                fireworks.appendChild(cat);
+                setTimeout(() => {
+                    cat.style.opacity = '1';
+                    cat.style.transform = 'translateY(-50px)';
+                }, 100);
+                setTimeout(() => {
+                    cat.remove();
+                }, 1500);
+            }
+        }
+    </script>
+</body>
+</html>
